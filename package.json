@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "export": "next build",
-    "start": "next start"
+    "start": "npx serve@latest out -l 3000",
+    "serve": "npx serve@latest out -l 3000"
   },
   "dependencies": {
     "next": "^14.2.33",
