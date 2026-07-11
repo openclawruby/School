@@ -7,7 +7,13 @@ const dataPath = path.join(process.cwd(), 'data', 'schools.json');
 export function getAllSchools(): School[] {
   const raw = fs.readFileSync(dataPath, 'utf-8');
   const data: SchoolsData = JSON.parse(raw);
-  return data.schools.sort((a, b) => a.ranking_2026 - b.ranking_2026);
+  return data.schools.sort((a, b) => {
+    // Push nulls/undefined to the bottom; rank ascending by ranking_2026
+    const ar = a.ranking_2026 ?? 9999;
+    const br = b.ranking_2026 ?? 9999;
+    if (ar !== br) return ar - br;
+    return (a.name_zh || '').localeCompare(b.name_zh || '');
+  });
 }
 
 export function getSchoolById(id: string): School | undefined {
