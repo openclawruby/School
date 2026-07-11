@@ -5,6 +5,7 @@ export interface School {
   type: 'DSS' | 'Private' | 'Government' | 'Aided' | 'International';
   category: string;
   district: string;
+  district_zh: string;
   gender: 'Boys' | 'Girls' | 'Co-ed';
   religion: string;
   medium_of_instruction: string;
